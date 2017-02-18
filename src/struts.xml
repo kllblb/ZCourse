@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+    <constant name="struts.multipart.saveDir" value="/users/lb/documents/developer/tmp"/>
+
+    <package name="struts.api" namespace="/api"
+		extends="json-default">
+		<action name="regverify" class="struts.api.APIAction" method="regerify">
+		  <result type="json"></result>
+	    </action>
+	</package>
+    
+	<package name="struts.android" namespace="/sa"
+		extends="json-default">
+		<action name="Login" class="struts.android.LoginAction" method="login">
+		  <result type="json"></result>
+	    </action>
+	    <action name="Signin" class="struts.android.LoginAction" method="signin">
+		  <result type="json"></result>
+	    </action>
+	    <action name="Downloadcourse" class="struts.android.LoginAction" method="downLoadCourse">
+		  <result type="json"></result>
+	    </action>
+	    <action name="Uploadcourse" class="struts.android.LoginAction" method="upLoadCourse">
+		  <result type="json"></result>
+	    </action>
+	</package>
+	<package name="struts.jsp" namespace="/sj"
+		extends="struts-default,json-default">
+		<global-results>
+		    <result name="login">/mainpage.html</result>
+		</global-results>
+		<action name="Login" class="struts.jsp.LoginAction" method="login">
+		  <result type="json">
+          </result>
+	    </action>
+	    <action name="logout" class="struts.jsp.LoginAction" method="logout">
+	    </action>
+	    <action name="signin" class="struts.jsp.LoginAction" method="signin">
+		  <result name="signin">/signup.html</result>
+	    </action>
+	    <action name="tosign" class="struts.jsp.LoginAction" method="tosign">
+		  <result name="signsucceeded">/mainpage.jsp</result>
+		  <result name="input">/signup.html</result>
+	    </action>
+	    <action name="safety" class="struts.jsp.LoginAction" method="safety">
+		  <result name="safety">/pages/safety.jsp</result>
+	    </action>
+	    
+	    
+	    <action name="*course" class="struts.jsp.CourseAction" method="{1}">
+		  <result name="{1}">/pages/{1}course.jsp</result>
+	    </action>
+	    <action name="mainpage" class="struts.jsp.CourseAction" method="mainPage">
+		  <result name="mainpage">/mainpage.jsp</result>
+	    </action>
+	    <action name="adding" class="struts.jsp.CourseAction" method="adding">
+		  <result name="addsucceeded">/mainpage.jsp</result>
+	    </action>
+	    <action name="editing" class="struts.jsp.CourseAction" method="editing">
+		  <result name="addsucceeded">/mainpage.jsp</result>
+	    </action>
+	    <action name="deleting" class="struts.jsp.CourseAction" method="deleting">
+		  <result name="deleted">/mainpage.jsp</result>
+	    </action>
+	    
+	    <action name="filearea" class="struts.jsp.FileAction" method="filearea">
+		  <result name="filearea">/pages/filearea.jsp</result>
+	    </action>
+	    <action name="todownload" class="struts.jsp.FileAction" method="todownload">
+		  <result name="todownload">/pages/downloading.jsp</result>
+	    </action>
+	    <action name="downloading" class="struts.jsp.DownloadAction">
+		  <result type="stream">
+		  <param name="contentType">application/octet-stream</param>
+		  <param name="contentDisposition">attachment;filename="${filename}"</param>
+		  <param name="inputName">downloading</param>
+		  <param name="bufferSize">2048</param>
+		  </result>
+	    </action>
+	    
+	    <action name="toupload" class="struts.jsp.FileAction" method="toupload">
+		  <result name="toupload">/pages/toupload.jsp</result>
+	    </action>
+	    <action name="upload" class="struts.jsp.FileAction" method="upload">
+		  <result name="input">/pages/toupload.jsp</result>
+		  <result name="list">/pages/uploaded.jsp</result>
+	    </action>
+	</package>
+</struts>    

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="lb,gy,cj">
+
+    <title>USTC软院智能课程表</title>
+
+    <link href="/Course/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Course/css/styles.css" rel="stylesheet">
+
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/Course/mainpage.html">USTC智能课程表</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div id="navbar" class="collapse navbar-collapse">
+   
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><button type="button" class="btn btn-default navbar-btn left-mg-md" data-toggle="modal" data-target="#signin">登录</button></li>
+
+          <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-signin">
+              <div class="modal-content">
+                <form id="signin-form" class="form-signin" >
+                  <input type="hidden" name="csrf_token" value="1456739937##fae15d58fe7b29d76a8ae14975279a8a5e292b2c" />
+                  <div class="form-signin-heading">
+                    <span class="h2">请登录</span>
+                    <a class="btn btn-default float-right" href="/Course/sj/signin.action">注册</a>
+                  </div>
+                  <div id="signin-alert" role="alert" class="display: none"></div>
+                  <label for="inputEmail" class="sr-only">用户名</label>
+                  <input type="text" name="account" id="inputEmail" class="form-control" placeholder="用户名" required autofocus>
+                  <label for="inputPassword" class="sr-only">密码</label>
+                  <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="remember">记住我
+                    </label>
+                  </div>
+                  <button class="btn btn-lg btn-blue btn-block" type="submit">登录</button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+          
+        </ul>
+        
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+   <div id="myCarousel" class="carousel slide" data-ride="carousel" align="center">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="/Course/image/north.jpg" alt="First slide">
+          
+        </div>
+        <div class="item">
+          <img class="second-slide" src="/Course/image/cow.jpg" alt="Second slide">
+          
+        </div>
+        <div class="item">
+          <img class="third-slide" src="/Course/image/lib.jpg" alt="Third slide">
+
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+
+
+
+
+
+<div class="container" id="footer">
+    <div class="ud-pd-sm">
+      <a class="right-pd-md" href='/aboutus'>关于我们</a>
+      <a class="right-pd-md" href='/介绍的页面'>课程表介绍</a>
+      <span class="float-right hidden">
+        <a class="right-pd-sm">中文</a>
+        <a class="left-pd-sm">English</a>
+      </span>
+    </div>
+    <span class="footer-text text-muted">Copyright &copy; 软件学院智能课程表 2016</span>
+</div><!-- end container -->
+</body>
+
+
+
+
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/Course/js/jquery.min.js"></script>
+  <script src="/Course/js/bootstrap.min.js"></script>
+      <script>
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", "1456739937##fae15d58fe7b29d76a8ae14975279a8a5e292b2c")
+            }
+        }
+    })
+    </script>
+  <script>
+   $('#signin').on('shown.bs.modal', function () {
+     $('#inputEmail').focus()
+   });
+
+   function signin_alert(msg, type) {
+     if (!type)
+       type = "danger";
+     $('#signin-alert').attr("class", "alert alert-" + type);
+     $('#signin-alert').html(msg);
+     $('#signin-alert').show();
+   }
+
+   $('#signin-form').submit(function(e) {
+     e.preventDefault();
+     var formdata = {};
+     $('#signin-form input').each(function() {
+       formdata[$(this).attr("name")] = $(this).val();
+     });
+     $.ajax({
+       type: "POST",
+       url: "/Course/sj/Login.action?next=%2F&ajax=True",
+       data: formdata,
+       dataType: "text",
+       success: function(res) {
+		   if(res=="no")
+		     signin_alert('用户名或密码错误！',"danger");
+		   else
+		     window.location.href=res;
+         /*if (res.status == 200) {
+           if (res.next)
+             window.location.href = res.next;
+           else
+             signin_alert(res.msg, "success");
+         } else {
+           signin_alert(res.msg);
+         }*/
+       },
+       error: function(e) {
+         signin_alert('服务器出现了故障。', "warning");
+       }
+     });
+   });
+
+   function read_notification(count) {
+     if (count == 0)
+         return;
+     $.ajax({
+        type: "POST",
+        url: "/api/notifications/",
+     });
+   }
+  </script>
+
+  
+<script>
+ $('#inputCourse').focus();
+</script>
+
+</html>

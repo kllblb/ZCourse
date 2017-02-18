@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity"> 
+ <class name="Course" table="tb_course">
+     <id  name="id" column="id">
+       <generator class="native" />
+     </id>
+    <property name="name"/>
+    <property name="start" type="int"/>
+    <property name="end" type="int"/>
+    <property name="course_index" type="int"/>
+    <property name="week_index" type="int"/>
+    <property name="course_amount" type="int"/>
+    <property name="createDate" type="timestamp" />
+    <many-to-one name="owner" class="Person" column="pid" lazy="false">
+    </many-to-one>
+    
+ </class>
+</hibernate-mapping>

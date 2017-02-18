@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity"> 
+ <class name="Person" table="tb_person">
+     <id  name="pid" column="pid">
+       <generator class="native" />
+     </id>
+    <property name="account" />
+    <property name="password" />
+    <property name="createDate" type="timestamp" />
+    <set name="courses" inverse="false" lazy="false">
+        <key column="pid"></key>
+        <one-to-many class="Course" />
+    </set>
+  
+    
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="struts.android" location="345,373" size="355,151">
+    <action name="Login" location="17,25" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <package name="struts.jsp" location="30,10" size="280,140">
+    <action name="Login" location="67,59" size="150,41">
+      <result name="mycourse">
+        <resourceEdge source="mycourse" routing="0" target="MyCourse.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="MyCourse.jsp" path="/MyCourse.jsp" location="95,192" size="150,55" />
+</Struts2Diagram>
+
